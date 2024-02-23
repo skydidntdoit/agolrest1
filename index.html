@@ -42,7 +42,7 @@
 
       //defining the geometry of the point
       const point = { //create a point
-       type: "point"
+       type: "point",
        longitude: -97.750689, //long lat of stevie ray vaughan statue
        latitude: 30.262098 
       };
@@ -57,11 +57,26 @@
         }  
       };
 
+      //defining popup properties
+      const popupTemplate = {
+        title: "{Name}",
+        content: "{Description}"
+      }
+      const attributes = {
+        Name: "Stevie Ray Vaughan Statue",
+        Description: "A bronze sculpture of Stevie Ray Vaughan by Ralph Helmick"
+      }
+
       //creating the point
       const pointGraphic = new Graphic({  
         geometry: point,  
-        symbol: simpleMarkerSymbol  
-      });
+        symbol: simpleMarkerSymbol,  
+      
+      //adding popup properties
+      attributes: attributes,
+      popupTemplate: popupTemplate
+
+    });
 
       //adding the point to the graphics layer
       graphicsLayer.add(pointGraphic);
