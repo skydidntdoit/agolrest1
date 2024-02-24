@@ -25,7 +25,7 @@
       //adding in the modules for the feature layers
       "esri/layers/FeatureLayer"
 
-    ], function (esriConfig,Map, MapView, Graphic, GraphicsLayer) {
+    ], function (esriConfig,Map, MapView, Graphic, GraphicsLayer, FeatureLayer) {
 
       esriConfig.apiKey = "AAPK7170024e9f4040658710d2304ab3b64dt12endQyEuwFKQk4gPITlD8vghyLWZCglohdvpLP5McC-0Hi79UOMg4MzAczwBTK";
       const map = new Map({
@@ -90,7 +90,7 @@
       //adding the feature layer to the map
       map.add(usaeduLayer);
     });
-    
+
   </script>
 
   <!-- css to make a full screen map -->
