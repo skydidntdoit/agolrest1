@@ -115,7 +115,8 @@
       //adding the Const for airport feature layer
       const airportLayer = new FeatureLayer({
         url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/US_Airports_/FeatureServer",
-        renderer: airportRenderer //calling the icon
+        renderer: airportRenderer, //calling the icon
+        definitionExpression: "Fac_Type = 'AIRPORT'" //adding sql to filter for airports
       });
     
     //adding the feature layer for airports
