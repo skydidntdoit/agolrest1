@@ -93,29 +93,30 @@
         url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Colleges_and_Universities_View/FeatureServer/layers",
         
       //adding the popup here
-      outFields: ["NAME","TOT_ENROLL"],
-      popupTemplate: popupEduusa,
+      outFields: ["INSTNM","INSTSIZE"],
+      popupTemplate: popupEduusa
+
+      });
       
       //adding the feature layer to the map
-      map.add(usaeduLayer),
+      map.add(usaeduLayer);
       
       // setting up the icon
-      const: airportRenderer = {
+      const airportRenderer = {
         "type": "simple",
         "symbol": {
-          "type": "picture-marker",
-          "url": "https://github.com/skydidntdoit/agol-2/blob/4c3c25ab347cc5e2cc7ae2b1872c379776484502/outline_local_airport_black_24dp.png",
-          "width": "18px",
-          "height": "18px",
-        }
+        "type": "picture-marker",
+        "url": "https://github.com/skydidntdoit/agol-2/blob/4c3c25ab347cc5e2cc7ae2b1872c379776484502/outline_local_airport_black_24dp.png",
+        "width": "18px",
+        "height": "18px",
       }
+    };
       
       //adding the Const for airport feature layer
-      const: airportLayer = new FeatureLayer({
+      const airportLayer = new FeatureLayer({
         url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/US_Airports_/FeatureServer",
         renderer: airportRenderer //calling the icon
-      })
-    });
+      });
     
     //adding the feature layer for airports
     map.add(airportLayer);
