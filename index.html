@@ -124,6 +124,17 @@
         "height": "18px",
        }
     };
+      
+      //setting up the icon for the selected airports
+      const myairportRenderer = {
+        "type": "simple",
+        "symbol": {
+          "type": "picture-marker",
+          "url": "star_FILL0_wght400_GRAD0_opsz24 (2).png",
+          "width": "18px",
+          "height": "18px",
+        }
+      };
     
     //const to make the airport labels
     const airportLabels = {
@@ -190,7 +201,7 @@
     //adding the const for the feature layer
     const myAirports = new FeatureLayer({
       url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/My_Airports_GIS/FeatureServer",
-      
+      renderer: myairportRenderer, //calling the icon
       //adding the popup here
       outFields: ["AirportCode"],
     });
@@ -212,7 +223,6 @@
     view.ui.add(editor, "top-right");
 
     });
-  
 
   </script>
 
