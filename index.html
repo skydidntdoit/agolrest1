@@ -50,7 +50,7 @@
        latitude: 29.6516 
       };
 
-      //defining the maker style
+      //defining the maker style for heart
       const heartSymbol = {
        type: "picture-marker",
        url: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50,87.5c-1.8,0-3.7-0.5-5.4-1.6c-4.2-2.4-7.2-6.8-8.6-11.8c-1.4,5-4.4,9.4-8.6,11.8c-4.6,2.7-9.8,1.6-12.8-2.1c-3.3-4.4-2.4-10.7,1.9-14.1c4.3-3.2,10.1-6.7,15.5-10.7c2.5-1.9,5-3.8,7.4-5.8c2.4,2,4.9,3.9,7.4,5.8c5.4,4,11.2,7.5,15.5,10.7c4.3,3.2,5.2,9.7,1.9,14.1c-3,3.7-8.2,4.8-12.8,2.1c-4.2-2.4-7.2-6.8-8.6-11.8c-1.4,5-4.4,9.4-8.6,11.8C53.7,87,51.8,87.5,50,87.5z' fill='%23ff0000' transform='rotate(180, 50, 50)' /%3E%3C/svg%3E",
@@ -101,19 +101,49 @@
       //adding the feature layer to the map
       map.add(usaeduLayer);
       
-      // setting up the icon
+      // setting up the icon for the airport
       const airportRenderer = {
         "type": "simple",
         "symbol": {
         "type": "picture-marker",
         "url": "outline_local_airport_black_24dp.png",
         "width": "18px",
-        "height": "18px",
+        "height": "18px"
       }
     };
-     
+      // setting up the icon for the helipad
+      const helicopterRenderer = {
+       "type": "simple",
+       "symbol": {
+        "type": "picture-maker",
+        "url": "helicopter.png",
+        "width": "18px",
+        "height": "18px"
+       }
+    };
+
     //const to make the airport labels
     const airportLabels = {
+      symbol: {
+        type: "text",
+        color: "#FFFFFF",
+        haloColor: "#5E8D74",
+        haloSize: "2px",
+        font: {
+          size: "12px",
+          family: "Noto Sans",
+          style: "italic",
+          weight: "normal"
+        }
+      },
+      labelPlacement: "above-center",
+      labelExpressionInfo: {
+        expression: "$feature.Fac_Name"
+      }
+    };
+
+    //const to make the heliport labels
+    const heliportLabels = {
       symbol: {
         type: "text",
         color: "#FFFFFF",
@@ -139,9 +169,20 @@
         definitionExpression: "Fac_Type = 'AIRPORT'", //adding sql to filter for airports 
         labelingInfo: [airportLabels] //adding the labels
       });
+
+      //adding the const for helipad feature layer
+      const helipadLayer = new FeatureLayer({
+        url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/US_Airports_/FeatureServer",
+        renderer: helicopterRenderer, //calling the icon
+        definitionExpression: "Fac_Type = 'HELIPORT'", //adding sql to filter for heliports
+        labelingInfo: [heliportLabels] //adding the labels
+    });
     
     //adding the feature layer for airports
     map.add(airportLayer);
+
+    //adding the feature layer for the heliports
+    map.add(helipadLayer);
 
     });
 
