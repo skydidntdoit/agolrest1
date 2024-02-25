@@ -121,11 +121,10 @@
         "type": "picture-marker",
         "url": "helicopter.png",
         "width": "18px",
-        "height": "18px"
+        "height": "18px",
        }
     };
-    }
-
+    
     //const to make the airport labels
     const airportLabels = {
       symbol: {
@@ -142,7 +141,7 @@
       },
       labelPlacement: "above-center",
       labelExpressionInfo: {
-        expression: "$feature.Fac_Name"
+        expression: "$feature.Fac_Name",
       }
     };
 
@@ -211,8 +210,9 @@
     
     // Add the widget to the view
     view.ui.add(editor, "top-right");
+
+    });
   
-  });
 
   </script>
 
