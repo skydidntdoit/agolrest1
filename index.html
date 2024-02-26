@@ -250,25 +250,25 @@
     }];
     
     // Add legend to the view with custom legend items
-    let legend = new Legend({
-      view: view,
-      layerInfos: [
-        {
-          layer: airportLayer,
-          title: "US Airports"
-        },
-        {
-          layer: heliportLayer, // Include heliportLayer in layerInfos
-          title: "US Heliports" // Set a title for the heliport layer
-        },
-        {
-          layer: myAirports,
-          title: "My Airports"
-        }
-      ],
-      customItems: customLegend // Use customItems instead of customLegendItems
-    });
-    view.ui.add(legend, "bottom-right");
+let legend = new Legend({
+  view: view,
+  layerInfos: [
+    {
+      layer: airportLayer,
+      title: "US Airports"
+    },
+    {
+      layer: heliportLayer,
+      title: "US Heliports"
+    },
+    {
+      layer: myAirports,
+      title: "My Airports"
+    }
+  ]
+});
+view.ui.add(legend, "bottom-right");
+
 
     });
 
