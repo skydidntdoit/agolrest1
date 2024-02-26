@@ -26,9 +26,12 @@
       "esri/layers/FeatureLayer",
 
       //adding editor widget
-      "esri/widgets/Editor"
+      "esri/widgets/Editor",
 
-    ], function (esriConfig,Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor) {
+      //adding the legend
+      "esri/widgets/Legend"
+
+    ], function (esriConfig,Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor, Legend) {
 
       esriConfig.apiKey = "AAPK7170024e9f4040658710d2304ab3b64dt12endQyEuwFKQk4gPITlD8vghyLWZCglohdvpLP5McC-0Hi79UOMg4MzAczwBTK";
       const map = new Map({
@@ -238,6 +241,12 @@
     
     // Add the widget to the view
     view.ui.add(editor, "top-right");
+
+    //add legend to the view
+    let legend = new Legend({
+      view: view
+    });
+    view.ui.add(legend, "bottom-right");
 
     });
 
