@@ -191,7 +191,7 @@
       },
       labelPlacement: "below-center",
       labelExpressionInfo: {
-        expression: "$feature.Airport Code"
+        expression: "$feature.Airport_Code"
       }
     };
 
@@ -223,7 +223,7 @@
       renderer: myairportRenderer, //calling the icon
       labelingInfo: [myairportLabels], //adding the labels
       //adding the popup here
-      outFields: ["Airport Code"],
+      outFields: ["Airport_Code"],
     });
     
     //adding the feature layer to the map
