@@ -242,11 +242,29 @@
     // Add the widget to the view
     view.ui.add(editor, "top-right");
 
-    //add legend to the view
-    let legend = new Legend({
-      view: view
-    });
-    view.ui.add(legend, "bottom-right");
+    // Create a custom legend item for the helicopter symbol
+    const customLegend = [{
+      type: "picture-marker",
+      url: "helicopter.png",
+      label: "US Heliports"
+    }];
+
+  // Add legend to the view with custom legend items
+  let legend = new Legend({
+    view: view,
+    layerInfos: [
+      {
+        layer: airportLayer,
+        title: "US Airports"
+      },
+      {
+        layer: myAirports,
+        title: "My Airports"
+      }
+    ],
+    customLegendItems: customLegend // Add custom legend item for helicopter symbol
+  });
+  view.ui.add(legend, "bottom-right");
 
     });
 
